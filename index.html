@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book Burrow</title>
+</head>
+
+<body>
+    <h1>The Book Burrow</h1>
+    <!-- Collect Book recommendation Form -->
+    <form id="bookForm">
+        <div class="form-header">
+            <h2>“…the perfect book algorithmically brewed for your soul.”</h2>
+        </div>
+        <!-- Author preference -->
+        <label for="author">Author</label>
+        <input type="text" id="author" placeholder="Optional">
+        <!-- Genre selector -->
+        <label for="genre">Genre</label>
+        <select id="genre" required>
+            <option value="">Select a genre</option>
+            <option value="Thriller">Psychological Thriller</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Autobiography">Autobiography</option>
+        </select>
+        <!-- Cost selector -->
+        <label for="price">Maximum Cost (£)</label>
+        <input type="number" id="price" min="0" placeholder="Optional">
+        <!-- Language selector -->
+        <label for="language">Language</label>
+        <select id="language">
+            <option value="">Any</option>
+            <option value="English">English</option>
+            <option value="Italian">Italian</option>
+        </select>
+        <!-- Book Format selector -->
+        <label for="format">Book Format</label>
+        <select id="format">
+            <option value="">Any</option>
+            <option value="Hardcover">Hardcover</option>
+            <option value="Paperback">Paperback</option>
+            <option value="eBook">eBook</option>
+
+            <label for="year">Published After</label>
+            <input type="number" id="year" placeholder="example, 1993" min="1900">
+            <!-- Submit the recommendation -->
+            <button type="submit">Open the Book Gate</button>
+        </select>
+    </form>
+</body>
+
+</html>
