@@ -103,3 +103,111 @@ document.getElementById('addName').addEventListener('click', function () {
     }
 });
 
+document.getElementById("bookForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const authorValue = document.getElementById("author").value.toLowerCase();
+    const genreInput = document.querySelector('input[name="genre"]:checked').value;
+    const priceRaw = document.getElementById("price").value;
+    let priceInput = null;
+    if (priceRaw !== "") {
+        priceInput = parseFloat(priceRaw);
+    }
+
+    const languageInput = document.getElementById("language").value;
+    const formatInput = document.querySelector('input[name="format"]:checked').value;
+
+    const yearRaw = document.getElementById("year").value;
+    let yearInput = null;
+    if (yearRaw !== "") {
+        yearInput = parseInt(yearRaw);
+    }
+
+    const filteredBooks = [];
+
+    for (let i = 0; i < books.length; i++) {
+        const book = books[i];
+        let matches = true;
+
+        if (authorValue !== "") {
+            if (book.author.toLowerCase().indexOf(authorValue) === -1) {
+                matches = false;
+            }
+        }
+
+        if (genreInput !== "") {
+            if (book.genre !== genreInput) {
+                matches = false;
+            }
+        }
+
+        if (priceInput !== null) {
+            if (book.price > priceInput) {
+                matches = false;
+            }
+        }
+
+        if (languageInput !== "") {
+            if (book.language !== languageInput) {
+                matches = false;
+            }
+        }
+
+        if (formatInput !== "") {
+            if (book.format !== formatInput) {
+                matches = false;
+            }
+        }
+
+        if (yearInput !== null) {
+            if (book.year <= yearInput) {
+                matches = false;
+            }
+        }
+
+        if (matches) {
+            filteredBooks.push(book);
+        }
+    }
+
+    const proposals = document.getElementById("proposals");
+    proposals.innerHTML = "";
+
+    if (filteredBooks.length > 0) {
+        for (let i = 0; i < filteredBooks.length; i++) {
+            const b = filteredBooks[i];
+            const bookCard = document.createElement("div");
+            bookCard.className = "book-card";
+
+            const title = document.createElement("h3");
+            title.textContent = b.title;
+            title.style.textAlign = "center";
+
+            const details = document.createElement("div");
+            details.innerHTML = "<p><strong>Author:</strong> " + b.author + "</p>" +
+                "<p><strong>Genre:</strong> " + b.genre + "</p>" +
+                "<p><strong>Price:</strong> £" + b.price.toFixed(2) + "</p>" +
+                "<p><strong>Language:</strong> " + b.language + "</p>" +
+                "<p><strong>Format:</strong> " + b.format + "</p>" +
+                "<p><strong>Year:</strong> " + b.year + "</p>" +
+                "<p><strong>Description:</strong> " + b.description + "</p>" +
+                "<p><strong>Popularity:</strong> " + b.popularity + "/10</p>";
+
+            const addButton = document.createElement("button");
+            addButton.textContent = "Add to Reading Vault";
+            addButton.style.marginTop = "10px";
+
+            addButton.addEventListener("click", function () {
+                addToVault(b);
+            });
+
+            bookCard.appendChild(title);
+            bookCard.appendChild(details);
+            bookCard.appendChild(addButton);
+
+            proposals.appendChild(bookCard);
+        }
+    } else {
+        proposals.innerHTML = "<p>No books matched your preferences. Try adjusting the filters!</p>";
+    }
+});
