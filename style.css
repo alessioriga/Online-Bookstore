@@ -155,3 +155,43 @@ button:hover {
 .book-card button:hover {
     background-color: #4a0051;
 }
+
+@media (max-width: 600px) {
+    body {
+        margin: 16px;
+    }
+
+    form {
+        max-width: 100%;
+        padding: 16px;
+    }
+
+    .bookformat,
+    .genre {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bookformat label,
+    .genre label {
+        margin: 0 0 6px 0;
+    }
+
+    input {
+        width: 92%;
+        padding: 12px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .book-card {
+        padding: 16px;
+    }
+}
+
