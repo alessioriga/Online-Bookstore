@@ -211,3 +211,32 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
         proposals.innerHTML = "<p>No books matched your preferences. Try adjusting the filters!</p>";
     }
 });
+
+function addToVault(book) {
+    const vault = document.getElementById("readingVault");
+
+    const existing = vault.querySelectorAll(".book-card");
+    for (let i = 0; i < existing.length; i++) {
+        const heading = existing[i].querySelector("h3");
+        if (heading && heading.textContent === book.title) {
+            alert("This book is already in your vault!");
+            return;
+        }
+    }
+
+    const bookCard = document.createElement("div");
+    bookCard.className = "book-card";
+
+    const title = document.createElement("h3");
+    title.textContent = book.title;
+
+    const details = document.createElement("div");
+    details.innerHTML = "<p><strong>Author:</strong> " + book.author + "</p>" +
+        "<p><strong>Genre:</strong> " + book.genre + "</p>" +
+        "<p><strong>Language:</strong> " + book.language + "</p>" +
+        "<p><strong>Year:</strong> " + book.year + "</p>";
+
+    bookCard.appendChild(title);
+    bookCard.appendChild(details);
+    vault.appendChild(bookCard);
+}
