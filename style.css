@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px;
@@ -119,7 +120,7 @@ button:hover {
 }
 
 .book-card {
-    border: 1px solid #dcdfe1;
+    border: 1px solid #6c6c6c;
     border-radius: 12px;
     padding: 20px;
     margin: 16px 0;
