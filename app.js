@@ -77,3 +77,29 @@ const books = [
         popularity: 8.5
     },
 ];
+
+let userName = [];
+
+document.getElementById('addName').addEventListener('click', function () {
+    const nameInput = document.getElementById('name');
+    const nameValue = nameInput.value;
+
+    if (nameValue !== "") {
+        if (userName.length === 0) {
+            userName.push(nameValue);
+        } else {
+            userName[0] = nameValue;
+        }
+
+        nameInput.disabled = true;
+
+        const output = document.getElementById('output');
+        output.innerHTML = "";
+
+        const nameCard = document.createElement("div");
+        nameCard.className = "book-card";
+        nameCard.innerHTML = "<h3 style='text-align: center;'>Hi " + userName[0] + ", here's your Reading Vault </h3>";
+        output.appendChild(nameCard);
+    }
+});
+
