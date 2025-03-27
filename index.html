@@ -9,48 +9,94 @@
 </head>
 
 <body>
-    <h1>The Book Burrow</h1>
-    <!-- Collect Book recommendation Form -->
-    <form id="bookForm">
-        <div class="form-header">
-            <h2>“…the perfect book algorithmically brewed for your soul.”</h2>
+    <main>
+        <div class="intro-box">
+            <h1>The Book Burrow</h1>
+            <p>“…the perfect book algorithmically brewed for your soul.”</p>
         </div>
-        <!-- Author preference -->
-        <label for="author">Author</label>
-        <input type="text" id="author" placeholder="Optional">
-        <!-- Genre selector -->
-        <label for="genre">Genre</label>
-        <select id="genre" required>
-            <option value="">Select a genre</option>
-            <option value="Thriller">Psychological Thriller</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Autobiography">Autobiography</option>
-        </select>
-        <!-- Cost selector -->
-        <label for="price">Maximum Cost (£)</label>
-        <input type="number" id="price" min="0" placeholder="Optional">
-        <!-- Language selector -->
-        <label for="language">Language</label>
-        <select id="language">
-            <option value="">Any</option>
-            <option value="English">English</option>
-            <option value="Italian">Italian</option>
-        </select>
-        <!-- Book Format selector -->
-        <label for="format">Book Format</label>
-        <select id="format">
-            <option value="">Any</option>
-            <option value="Hardcover">Hardcover</option>
-            <option value="Paperback">Paperback</option>
-            <option value="eBook">eBook</option>
+        <!-- Collect Book recommendation Form -->
+        <form id="bookForm" aria-labelledby="bookFormTitle">
+            <h2 id="bookFormTitle" class="visually-hidden">Create Your Reading Profile</h2>
+            <div>
+                <label for="name">Create your Reading Profile</label><br>
+                <input type="text" name="name" id="name" placeholder="Enter your Name" required aria-required="true"
+                    aria-label="Enter your name">
+                <button type="button" id="addName" aria-label="Add your name">Add your name</button>
+            </div>
 
-            <label for="year">Published After</label>
-            <input type="number" id="year" placeholder="example, 1993" min="1900">
+            <!-- Author preference -->
+            <label for="author" aria-label="Author preference">Author</label>
+            <input type="text" id="author" placeholder="Optional" aria-label="Enter your preferred author">
+
+            <!-- Genre selector -->
+            <fieldset class="genre" aria-labelledby="genreGroup">
+                <legend id="genreGroup">Genre</legend>
+                <input type="radio" id="anyGenre" name="genre" value="" checked aria-label="Any genre">
+                <label for="anyGenre">Any</label>
+
+                <input type="radio" id="thriller" name="genre" value="Thriller" aria-label="Thriller genre">
+                <label for="thriller">Thriller</label>
+
+                <input type="radio" id="fiction" name="genre" value="Fiction" aria-label="Fiction genre">
+                <label for="fiction">Fiction</label>
+
+                <input type="radio" id="fantasy" name="genre" value="Fantasy" aria-label="Fantasy genre">
+                <label for="fantasy">Fantasy</label>
+
+                <input type="radio" id="mystery" name="genre" value="Mystery" aria-label="Mystery genre">
+                <label for="mystery">Mystery</label>
+            </fieldset>
+
+            <!-- Cost selector -->
+            <label for="price" aria-label="Cost of the book">Cost (£)</label>
+            <input type="number" id="price" min="0" placeholder="Optional" aria-label="Enter your preferred cost">
+
+            <!-- Language selector -->
+            <label for="language" aria-label="Language preference">Language</label>
+            <select id="language" aria-label="Select your preferred language">
+                <option value="">Any</option>
+                <option value="English">English</option>
+                <option value="Italian">Italian</option>
+            </select>
+
+            <!-- Book Format selector -->
+            <fieldset class="bookformat" aria-labelledby="formatGroup">
+                <legend id="formatGroup">Book Format</legend>
+                <input type="radio" id="anyFormat" name="format" value="" checked aria-label="Any format">
+                <label for="anyFormat">Any</label>
+
+                <input type="radio" id="hardcover" name="format" value="Hardcover" aria-label="Hardcover format">
+                <label for="hardcover">Hardcover</label>
+
+                <input type="radio" id="paperback" name="format" value="Paperback" aria-label="Paperback format">
+                <label for="paperback">Paperback</label>
+
+                <input type="radio" id="ebook" name="format" value="eBook" aria-label="eBook format">
+                <label for="ebook">eBook</label>
+            </fieldset>
+
+            <!-- Release year selector -->
+            <label for="year" aria-label="Published After">Published After</label>
+            <input type="number" id="year" placeholder="Example, 1993" min="1900"
+                aria-label="Enter the year you prefer books to be published after">
+
             <!-- Submit the recommendation -->
-            <button type="submit">Open the Book Gate</button>
-        </select>
-    </form>
+            <button type="submit" aria-label="Open the Book Gate and see recommendations">Open the Book Gate</button>
+        </form>
+        <section class="results">
+            <h2>Top Picks</h2>
+            <div id="proposals"></div>
+        </section>
+        <section class="readingVault">
+            <h2>My Reading Vault</h2>
+            <div id="output"></div>
+            <div id="readingVault"></div>
+        </section>
+        <script src="app.js"></script>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 The Book Burrow. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
