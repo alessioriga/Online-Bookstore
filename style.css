@@ -78,3 +78,38 @@ input {
     font-size: 16px;
     background-color: #fafafa;
 }
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #f4f6fa;
+}
+
+select {
+    width: auto;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 2px solid #ecf0f1;
+    background-color: #fafafa;
+}
+
+select:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #f4f6fa;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 16px;
+    padding: 12px 24px;
+    background-color: #006ab1;
+    color: #ffffff;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
